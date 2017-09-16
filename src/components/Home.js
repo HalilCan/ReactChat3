@@ -8,10 +8,14 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+import {
+    Actions,
+} from 'react-native-router-flux'
+
 class Home extends React.Component {
     state = {
         name : '',
-    }
+    };
 
     render () {
         return (
@@ -32,7 +36,11 @@ class Home extends React.Component {
                 <TouchableOpacity
                     onPress={() => {
                         // navigate to the second screen and pass it the name
-                        alert(this.state.name);
+                        console.log(this.state.name);
+                        // debugger;
+                        Actions.chat({
+                            name: this.state.name,
+                        })
                     }}
                 >
                     <Text style = {styles.buttonText}>
@@ -44,7 +52,7 @@ class Home extends React.Component {
     }
 }
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
     title: {
         marginTop: 20,
         marginLeft: 20,
