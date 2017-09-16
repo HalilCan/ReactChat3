@@ -1,4 +1,6 @@
 import React from 'react';
+import * as firebase from 'firebase';
+
 
 import {
     View,
@@ -19,7 +21,7 @@ class Home extends React.Component {
 
     render () {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text style = {styles.title}>
                     Enter your name:
                 </Text>
@@ -29,9 +31,9 @@ class Home extends React.Component {
                     onChangeText={(text) => {
                         this.setState({
                             name: text,
-                        })
+                        });
                     }}
-                    value = {(this.state.name)}
+                    value = {this.state.name}
                 />
                 <TouchableOpacity
                     onPress={() => {
@@ -40,7 +42,7 @@ class Home extends React.Component {
                         // debugger;
                         Actions.chat({
                             name: this.state.name,
-                        })
+                        });
                     }}
                 >
                     <Text style = {styles.buttonText}>
@@ -68,6 +70,9 @@ let styles = StyleSheet.create({
     buttonText: {
         marginLeft: 20,
         marginRight: 20,
+    },
+    container: {
+        flex:1,
     }
 });
 

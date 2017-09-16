@@ -1,3 +1,5 @@
+import * as firebase from 'firebase';
+
 import {
     AppRegistry
 } from 'react-native'
