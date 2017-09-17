@@ -1,24 +1,23 @@
 import React from 'react';
 
-import {GiftedChat} from 'react-native-gifted-chat';
+import { GiftedChat } from 'react-native-gifted-chat';
 import Backend from '../Backend';
 
-class Chat extends React.Component {
+export default class Chat extends React.Component {
     state = {
-        messages: []
+        messages: [],
     };
     componentWillMount() {
 
     }
-    render () {
+    render() {
         return (
             <GiftedChat
-                messages = {this.state.messages}
-                onSend= {(message) => {
-                   //send message to your backend
-                   Backend.sendMessage(message);
+                messages={this.state.messages}
+                onSend={(message) => {
+                    Backend.sendMessage(message);
                 }}
-                user = {{
+                user={{
                     _id: Backend.getUid(),
                     name: this.props.name,
                 }}
@@ -27,24 +26,22 @@ class Chat extends React.Component {
     }
     componentDidMount() {
         Backend.loadMessages((message) => {
-           this.setState((previousState) => {
-               return {
-                 messages: GiftedChat.append(previousState.messages, message),
-               };
-           });
+            this.setState((previousState) => {
+                return {
+                    messages: GiftedChat.append(previousState.messages, message),
+                };
+            });
         });
     }
     componentWillUnmount() {
-       Backend.closeChat();
+        Backend.closeChat();
     }
 }
 
 Chat.defaultProps = {
-    name: 'John',
+    name: 'John Smith',
 };
 
 Chat.propTypes = {
     name: React.PropTypes.string,
 };
-
-export default Chat;
