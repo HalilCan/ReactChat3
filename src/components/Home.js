@@ -38,7 +38,8 @@ class Home extends React.Component {
                 <TouchableOpacity
                     onPress={() => {
                         // navigate to the second screen and pass it the name
-                        // console.log(this.state.name);
+                        console.log(this.state.name);
+                        // console.log the correct name
                         // debugger;
                         Actions.chat({
                             name: this.state.name,
