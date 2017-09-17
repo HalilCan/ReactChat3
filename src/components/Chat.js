@@ -19,7 +19,7 @@ class Chat extends React.Component {
                    Backend.sendMessage(message);
                 }}
                 user = {{
-                    _id: Backend.getUid,
+                    _id: Backend.getUid(),
                     name: this.props.name,
                 }}
             />
